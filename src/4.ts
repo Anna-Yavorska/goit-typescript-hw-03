@@ -1,18 +1,13 @@
 class Key {
-  private signature: number;
+  private signature: number = Math.random();
 
-  constructor() {
-    this.signature = Math.random();
-  }
   public getSignature(): number {
     return this.signature;
   }
 }
 
 class Person {
-  constructor(private key: Key) {
-    this.key = key;
-  }
+  constructor(private key: Key) {}
 
   public getKey(): Key {
     return this.key;
@@ -20,14 +15,10 @@ class Person {
 }
 
 abstract class House {
-  protected door: boolean;
-  protected tenants: Person[];
+  protected door: boolean = false;
+  protected tenants: Person[] = [];
 
-  constructor(protected key: Key) {
-    this.door = false;
-    this.tenants = [];
-    this.key = key;
-  }
+  constructor(protected key: Key) {}
 
   public comeIn(person: Person): void {
     this.door ? this.tenants.push(person) : console.log("Sorry! The door is closed");
